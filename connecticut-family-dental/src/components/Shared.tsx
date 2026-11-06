@@ -1,0 +1,7 @@
+import { motion, useReducedMotion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+export function ToothIcon({size=30,className=''}:{size?:number;className?:string}) {return <svg width={size} height={size} className={className} viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M14 6C5 6 6 17 10 23c3 5 3 17 7 18 4 1 3-13 7-13s3 14 7 13 4-13 7-18c4-6 5-17-4-17-5 0-7 3-10 3s-5-3-10-3Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M26 10c2 2 5 3 8 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>}
+export function Reveal({children,className='',delay=0}:{children:ReactNode;className?:string;delay?:number}) {const reduce=useReducedMotion();return <motion.div initial={reduce?false:{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-45px'}} transition={{duration:.65,delay,ease:[.2,.7,.2,1]}} className={className}>{children}</motion.div>}
+export function SectionLabel({children,light=false}:{children:ReactNode;light?:boolean}) {return <div className={`eyebrow ${light?'eyebrow-light':''}`}><span/>{children}</div>}
+export function BookButton({onClick,children='Book an Appointment',className=''}:{onClick:()=>void;children?:ReactNode;className?:string}) {return <button onClick={onClick} className={`btn btn-primary ${className}`}>{children}<ArrowUpRight size={18}/></button>}
